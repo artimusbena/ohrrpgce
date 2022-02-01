@@ -1,0 +1,15 @@
+
+plotscript, benatestscript, begin
+	while (true) do (
+		mainloop
+	)
+	
+	subscript, mainloop, begin
+		variable (sl)
+		sl := create sprite (spritetype:attack, get attack picture (1))
+		wait for key (any key)
+		free slice (sl)
+		sl := 0
+show value (get target stat (1))
+	end
+end

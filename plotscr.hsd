@@ -756,6 +756,8 @@ define function, begin
 727,healparty,1,-2            # Restore active party's HP & MP ([revive dead heroes])
 728,setheroautobattle,2,0,0   # Change a hero's auto battle setting
 729,getheroautobattle,1,0     # Return true if the hero is set to auto battle
+730,getattackpicture,1,-1	  # Returns attack ID's sprite number
+731,gettargetstat,1,-1		  # Returns attack ID's target stat (HP, MP, Poison Register, etc.)
 
 # Don't forget to update maxScriptCmdID in const.bi when adding new commands
 end
@@ -2377,3 +2379,26 @@ define constant, begin
 -102100, sl:pathfind dest display
 end
 #</SLICE LOOKUP CODES>
+
+#<ATTACK DATA> #Bena: Wasn't sure where else to put this
+# these are so that the user can script something like `if (get target stat(ATTACK ID) == statHP) then ()`
+# for ease, these constants match the values and naming found in the source code
+define constant, begin
+0, statHP
+1, statMP
+2, statAtk
+3, statAim
+4, statDef
+5, statDodge
+6, statMagic
+7, statWill
+8, statSpeed
+9, statCtr
+10, statFocus
+11, statHitX
+12, statPoison
+13, statRegen
+14, statStun
+15, statMute
+end
+#</ATTACK DATA>

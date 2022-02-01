@@ -5079,7 +5079,18 @@ SUB script_functions(byval cmdid as integer)
   IF really_valid_hero_party(heronum) THEN
    scriptret = IIF(gam.hero(heronum).auto_battle, 1, 0)
   END IF
-
+ Case 730 '--get attack picture
+  IF valid_attack(retvals(0)) THEN
+   DIM attack as AttackData
+   loadattackdata attack, retvals(0)
+   scriptret = attack.picture
+  END IF
+ Case 731 '--get target stat
+  IF valid_attack(retvals(0)) THEN
+   DIM attack as AttackData
+   loadattackdata attack, retvals(0)
+   scriptret = attack.targ_stat
+  end if
 
  CASE ELSE
   'We also check the HSP header at load time to check there aren't unsupported commands
