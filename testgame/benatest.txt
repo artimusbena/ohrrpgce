@@ -6,10 +6,10 @@ plotscript, benatestscript, begin
 	
 	subscript, mainloop, begin
 		variable (sl)
-		sl := create sprite (spritetype:attack, get attack picture (1))
+		sl := create sprite (spritetype:attack, get attack data (1, attack:picture))
 		wait for key (any key)
 		free slice (sl)
 		sl := 0
-show value (get target stat (1))
+show value (get attack data (1, attack:targetstat))
 	end
 end

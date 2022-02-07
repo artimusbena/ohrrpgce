@@ -5079,18 +5079,16 @@ SUB script_functions(byval cmdid as integer)
   IF really_valid_hero_party(heronum) THEN
    scriptret = IIF(gam.hero(heronum).auto_battle, 1, 0)
   END IF
- Case 730 '--get attack picture
+ Case 730 '--get attack data
   IF valid_attack(retvals(0)) THEN
    DIM attack as AttackData
    loadattackdata attack, retvals(0)
-   scriptret = attack.picture
+   select case retvals(1)
+    case 0:  scriptret = attack.picture
+    Case 1:  scriptret = attack.targ_stat
+    case else:  scripterr "Unknown attack data index " & retvals(1)
+   end select
   END IF
- Case 731 '--get target stat
-  IF valid_attack(retvals(0)) THEN
-   DIM attack as AttackData
-   loadattackdata attack, retvals(0)
-   scriptret = attack.targ_stat
-  end if
 
  CASE ELSE
   'We also check the HSP header at load time to check there aren't unsupported commands
