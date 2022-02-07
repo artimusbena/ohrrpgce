@@ -5079,15 +5079,106 @@ SUB script_functions(byval cmdid as integer)
   IF really_valid_hero_party(heronum) THEN
    scriptret = IIF(gam.hero(heronum).auto_battle, 1, 0)
   END IF
- Case 730 '--get attack data
+ CASE 730 '--get attack data
   IF valid_attack(retvals(0)) THEN
    DIM attack as AttackData
    loadattackdata attack, retvals(0)
-   select case retvals(1)
-    case 0:  scriptret = attack.picture
-    Case 1:  scriptret = attack.targ_stat
-    case else:  scripterr "Unknown attack data index " & retvals(1)
-   end select
+   SELECT CASE retvals(1)
+    CASE 0:  scriptret = attack.picture
+    CASE 1:  scriptret = attack.targ_stat
+    CASE 2:  scriptret = attack.pal
+    CASE 3:  scriptret = attack.wep_picture
+    CASE 4:  scriptret = attack.wep_pal
+    CASE 5:  scriptret = attack.anim_pattern
+    CASE 6:  scriptret = attack.targ_class
+    CASE 7:  scriptret = attack.targ_set
+    CASE 8:  scriptret = attack.damage_math
+    CASE 9:  scriptret = attack.aim_math
+    CASE 10:  scriptret = attack.base_atk_stat
+    CASE 11:  scriptret = attack.base_def_stat
+    CASE 12:  scriptret = attack.mp_cost
+    CASE 13:  scriptret = attack.hp_cost
+    CASE 14:  scriptret = attack.money_cost
+    CASE 15:  scriptret = attack.extra_damage
+    ' CASE 16:  scriptret = attack.attacker_anim
+    CASE 17:  scriptret = attack.attack_delay
+    CASE 18:  scriptret = attack.turn_delay
+    CASE 19:  scriptret = attack.hits
+    CASE 20:  scriptret = attack.prefer_targ
+    CASE 21:  scriptret = attack.prefer_targ_stat
+    CASE 22:  scriptret = attack.dramatic_pause
+    CASE 23:  scriptret = attack.caption_time
+    CASE 24:  scriptret = attack.caption_delay
+    CASE 25:  scriptret = attack.sound_effect
+    CASE 26:  scriptret = attack.learn_sound_effect
+    CASE 27:  scriptret = attack.base_acc_stat
+    CASE 28:  scriptret = attack.base_dog_stat
+    CASE 29:  scriptret = attack.randomization
+    CASE 30:  scriptret = attack.damage_color
+    CASE 31:  scriptret = attack.targ_offset_x
+    CASE 32:  scriptret = attack.targ_offset_y
+    CASE 33:  scriptret = attack.targ_halign
+    CASE 34:  scriptret = attack.targ_valign
+    CASE 35:  scriptret = attack.change_control
+    CASE 36:  scriptret = attack.change_turncoat
+    CASE 37:  scriptret = attack.change_defector
+    ' add further non-bitset data above this line
+    ' bitsets:
+    CASE 70:  scriptret = attack.cure_instead_of_harm
+    CASE 71:  scriptret = attack.divide_spread_damage
+    CASE 72:  scriptret = attack.absorb_damage
+    CASE 73:  scriptret = attack.unreversable_picture
+    CASE 74:  scriptret = attack.can_steal_item
+    ' CASE 75:  scriptret = attack.elemental_damage
+    ' CASE 76:  scriptret = attack.cannot_target_enemy_slot
+    ' CASE 77:  scriptret = attack.cannot_target_hero_slot
+    CASE 78:  scriptret = attack.ignore_extra_hits
+    CASE 79:  scriptret = attack.erase_rewards
+    CASE 80:  scriptret = attack.show_damage_without_inflicting
+    CASE 81:  scriptret = attack.store_targ
+    CASE 82:  scriptret = attack.delete_stored_targs
+    CASE 83:  scriptret = attack.automatic_targ
+    CASE 84:  scriptret = attack.show_name
+    CASE 85:  scriptret = attack.dont_display_damage
+    CASE 86:  scriptret = attack.dont_display_miss
+    CASE 87:  scriptret = attack.dont_display_fail
+    CASE 88:  scriptret = attack.reset_targ_stat_before_hit
+    CASE 89:  scriptret = attack.allow_cure_to_exceed_maximum
+    CASE 90:  scriptret = attack.useable_outside_battle
+    CASE 91:  scriptret = attack.useable_inside_battle
+    CASE 92:  scriptret = attack.damage_can_be_zero
+    CASE 93:  scriptret = attack.force_run
+    CASE 94:  scriptret = attack.force_victory
+    CASE 95:  scriptret = attack.force_battle_exit
+    CASE 96:  scriptret = attack.mutable
+    CASE 97:  scriptret = attack.fail_if_targ_poison
+    CASE 98:  scriptret = attack.fail_if_targ_stun
+    CASE 99:  scriptret = attack.fail_if_targ_mute
+    CASE 100:  scriptret = attack.percent_damage_not_set
+    CASE 101:  scriptret = attack.no_chain_on_failure
+    CASE 102:  scriptret = attack.reset_poison
+    CASE 103:  scriptret = attack.reset_regen
+    CASE 104:  scriptret = attack.reset_stun
+    CASE 105:  scriptret = attack.reset_mute
+    CASE 106:  scriptret = attack.cancel_targets_attack
+    CASE 107:  scriptret = attack.not_cancellable_by_attacks
+    CASE 108:  scriptret = attack.no_spawn_on_attack
+    CASE 109:  scriptret = attack.no_spawn_on_kill
+    CASE 110:  scriptret = attack.check_costs_as_item
+    CASE 111:  scriptret = attack.recheck_costs_after_delay
+    CASE 112:  scriptret = attack.targ_does_not_flinch
+    CASE 113:  scriptret = attack.do_not_exceed_targ_stat
+    CASE 114:  scriptret = attack.nonblocking
+    CASE 115:  scriptret = attack.never_trigger_elemental_counterattacks
+    CASE 116:  scriptret = attack.poison_is_negative_regen
+    CASE 117:  scriptret = attack.always_hide_attacker
+    CASE 118:  scriptret = attack.always_unhide_attacker
+    CASE 119:  scriptret = attack.blocking_counterattack
+    CASE 120:  scriptret = attack.empty_target_ready_meter
+    CASE 121:  scriptret = attack.fill_target_ready_meter
+    CASE 122:  scriptret = attack.fail_if_targ_regen
+    CASE ELSE:  scripterr "Unknown attack data index " & retvals(1)
+   END SELECT
   END IF
 
  CASE ELSE

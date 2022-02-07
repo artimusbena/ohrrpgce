@@ -2334,6 +2334,96 @@ define constant, begin
 # Attack Data
 0, attack:picture
 1, attack:targetstat
+2, attack:palette
+3, attack:weaponpicture
+4, attack:weaponpalette
+5, attack:animpattern
+6, attack:targetclass
+7, attack:targetset
+8, attack:damagemath
+9, attack:aimmath
+10, attack:baseaattack
+11, attack:basedefense
+12, attack:mpcost
+13, attack:hpcost
+14, attack:moneycost
+15, attack:extradamage
+16, attack:attackeranim
+17, attack:delay
+18, attack:turndelay
+19, attack:hits
+20, attack:prefertarget
+21, attack:prefertargetstat
+22, attack:dramaticpause
+23, attack:captiontime
+24, attack:captiondelay
+25, attack:soundeffect
+26, attack:learnsoundeffect
+27, attack:baseaccuracy
+28, attack:basedodge
+29, attack:randomization
+30, attack:damagecolor
+31, attack:targetoffsetx
+32, attack:targetoffsety
+33, attack:targetalignh
+34, attack:targetalignv
+35, attack:changecontrol
+36, attack:changeturncoat
+37, attack:changedefector
+# Attack Data Bitsets
+70, attack:cure
+71, attack:dividespread
+72, attack:absorb
+73, attack:unreversiblepicture
+74, attack:canstealitem
+# 75, attack:elementaldamage
+# 76, attack:cannottargetenemyslot
+# 77, attack:cannottargetheroslot
+78, attack:ignoreextrahits
+79, attack:eraserewards
+80, attack:showdamagewithoutinflicting
+81, attack:storetarget
+82, attack:deletestoredtargets
+83, attack:autotarget
+84, attack:showname
+85, attack:dontdisplaydamage
+86, attack:dontdisplaymiss
+87, attack:dontdisplayfail
+88, attack:resettargetstat
+89, attack:allowexcesscure
+90, attack:useableoutsidebattle
+91, attack:useableinsidebattle
+92, attack:damagecanbezero
+93, attack:forcerun
+94, attack:forcevictory
+95, attack:forcebattleexit
+96, attack:mutable
+97, attack:failiftargetpoison
+98, attack:failiftargetstun
+99, attack:failiftargetmute
+100, attack:percentdamagenotset
+101, attack:nochainonfail
+102, attack:resetpoison
+103, attack:resetregen
+104, attack:resetstun
+105, attack:resetmute
+106, attack:canceltargetsattack
+107, attack:nocancelbyattacks
+108, attack:nospawnonattack
+109, attack:nospawnonkill
+110, attack:checkcostsasitem
+111, attack:recheckcostsafterdelay
+112, attack:targetnoflinch
+113, attack:noexceedtargetstat
+114, attack:nonblocking
+115, attack:notriggerelementalcounters
+116, attack:poisonisnegativeregen
+117, attack:alwayshideattacker
+118, attack:alwaysunhideattacker
+119, attack:blockingcounterattack
+120, attack:enemytargetreadymeter
+121, attack:filltargetreadymeter
+122, attack:failiftargetregen
 end
 
 #<SLICE LOOKUP CODES>
