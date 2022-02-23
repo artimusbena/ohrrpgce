@@ -2332,98 +2332,98 @@ define constant, begin
 0,pool:local
 1,pool:global
 # Attack Data
-0, attack:picture
-1, attack:targetstat
-2, attack:palette
-3, attack:weaponpicture
-4, attack:weaponpalette
-5, attack:animpattern
-6, attack:targetclass
-7, attack:targetset
-8, attack:damagemath
-9, attack:aimmath
-10, attack:baseaattack
-11, attack:basedefense
-12, attack:mpcost
-13, attack:hpcost
-14, attack:moneycost
-15, attack:extradamage
-16, attack:attackeranim
-17, attack:delay
-18, attack:turndelay
-19, attack:hits
-20, attack:prefertarget
-21, attack:prefertargetstat
-22, attack:dramaticpause
-23, attack:captiontime
-24, attack:captiondelay
-25, attack:soundeffect
-26, attack:learnsoundeffect
-27, attack:baseaccuracy
-28, attack:basedodge
-29, attack:randomization
-30, attack:damagecolor
-31, attack:targetoffsetx
-32, attack:targetoffsety
-33, attack:targetalignh
-34, attack:targetalignv
-35, attack:changecontrol
-36, attack:changeturncoat
-37, attack:changedefector
+1, attack:picture
+2, attack:target stat
+3, attack:palette
+4, attack:weapon picture
+5, attack:weapon palette
+6, attack:anim pattern
+7, attack:target class
+8, attack:target set
+9, attack:damage math
+10, attack:aim math
+11, attack:base attack
+12, attack:base defense
+13, attack:mp cost
+14, attack:hp cost
+15, attack:money cost
+16, attack:extra damage
+17, attack:attacker anim
+18, attack:delay
+19, attack:turn delay
+20, attack:hits
+21, attack:prefer target
+22, attack:prefer target stat
+23, attack:dramatic pause
+24, attack:caption time
+25, attack:caption delay
+26, attack:sound effect
+27, attack:learn sound effect
+28, attack:base accuracy
+29, attack:base dodge
+30, attack:randomization
+31, attack:damage color
+32, attack:target offset x
+33, attack:target offset y
+34, attack:target align h
+35, attack:target align v
+36, attack:change control
+37, attack:change turncoat
+38, attack:change defector
 # Attack Data Bitsets
 70, attack:cure
-71, attack:dividespread
+71, attack:divide spread
 72, attack:absorb
-73, attack:unreversiblepicture
-74, attack:canstealitem
-# 75, attack:elementaldamage
-# 76, attack:cannottargetenemyslot
-# 77, attack:cannottargetheroslot
-78, attack:ignoreextrahits
-79, attack:eraserewards
-80, attack:showdamagewithoutinflicting
-81, attack:storetarget
-82, attack:deletestoredtargets
-83, attack:autotarget
-84, attack:showname
-85, attack:dontdisplaydamage
-86, attack:dontdisplaymiss
-87, attack:dontdisplayfail
-88, attack:resettargetstat
-89, attack:allowexcesscure
-90, attack:useableoutsidebattle
-91, attack:useableinsidebattle
-92, attack:damagecanbezero
-93, attack:forcerun
-94, attack:forcevictory
-95, attack:forcebattleexit
+73, attack:unreversible picture
+74, attack:can steal item
+# 75, attack:elemental damage
+# 76, attack:cannot target enemy slot
+# 77, attack:cannot target hero slot
+78, attack:ignore extra hits
+79, attack:erase rewards
+80, attack:show damage without inflicting
+81, attack:store target
+82, attack:delete stored targets
+83, attack:auto target
+84, attack:show name
+85, attack:dont display damage
+86, attack:dont display miss
+87, attack:dont display fail
+88, attack:reset target stat
+89, attack:allow excess cure
+90, attack:useable outside battle
+91, attack:useable inside battle
+92, attack:damage can be zero
+93, attack:force run
+94, attack:force victory
+95, attack:force battle exit
 96, attack:mutable
-97, attack:failiftargetpoison
-98, attack:failiftargetstun
-99, attack:failiftargetmute
-100, attack:percentdamagenotset
-101, attack:nochainonfail
-102, attack:resetpoison
-103, attack:resetregen
-104, attack:resetstun
-105, attack:resetmute
-106, attack:canceltargetsattack
-107, attack:nocancelbyattacks
-108, attack:nospawnonattack
-109, attack:nospawnonkill
-110, attack:checkcostsasitem
-111, attack:recheckcostsafterdelay
-112, attack:targetnoflinch
-113, attack:noexceedtargetstat
-114, attack:nonblocking
-115, attack:notriggerelementalcounters
-116, attack:poisonisnegativeregen
-117, attack:alwayshideattacker
-118, attack:alwaysunhideattacker
-119, attack:blockingcounterattack
-120, attack:enemytargetreadymeter
-121, attack:filltargetreadymeter
-122, attack:failiftargetregen
+97, attack:fail if target poison
+98, attack:fail if target stun
+99, attack:fail if target mute
+100, attack:percent damage not set
+101, attack:no chain on fail
+102, attack:reset poison
+103, attack:reset regen
+104, attack:reset stun
+105, attack:reset mute
+106, attack:cancel targets attack
+107, attack:no cancel by attacks
+108, attack:no spawn on attack
+109, attack:no spawn on kill
+110, attack:check costs as item
+111, attack:recheck costs after delay
+112, attack:target no flinch
+113, attack:no exceed target stat
+114, attack:non blocking
+115, attack:no trigger elemental counters
+116, attack:poison is negative regen
+117, attack:always hide attacker
+118, attack:always unhide attacker
+119, attack:blocking counterattack
+120, attack:enemy target readymeter
+121, attack:fill target readymeter
+122, attack:fail if target regen
 end
 
 #<SLICE LOOKUP CODES>

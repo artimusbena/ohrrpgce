@@ -5084,44 +5084,44 @@ SUB script_functions(byval cmdid as integer)
    DIM attack as AttackData
    loadattackdata attack, retvals(0)
    SELECT CASE retvals(1)
-    CASE 0:  scriptret = attack.picture
-    CASE 1:  scriptret = attack.targ_stat
-    CASE 2:  scriptret = attack.pal
-    CASE 3:  scriptret = attack.wep_picture
-    CASE 4:  scriptret = attack.wep_pal
-    CASE 5:  scriptret = attack.anim_pattern
-    CASE 6:  scriptret = attack.targ_class
-    CASE 7:  scriptret = attack.targ_set
-    CASE 8:  scriptret = attack.damage_math
-    CASE 9:  scriptret = attack.aim_math
-    CASE 10:  scriptret = attack.base_atk_stat
-    CASE 11:  scriptret = attack.base_def_stat
-    CASE 12:  scriptret = attack.mp_cost
-    CASE 13:  scriptret = attack.hp_cost
-    CASE 14:  scriptret = attack.money_cost
-    CASE 15:  scriptret = attack.extra_damage
-    ' CASE 16:  scriptret = attack.attacker_anim
-    CASE 17:  scriptret = attack.attack_delay
-    CASE 18:  scriptret = attack.turn_delay
-    CASE 19:  scriptret = attack.hits
-    CASE 20:  scriptret = attack.prefer_targ
-    CASE 21:  scriptret = attack.prefer_targ_stat
-    CASE 22:  scriptret = attack.dramatic_pause
-    CASE 23:  scriptret = attack.caption_time
-    CASE 24:  scriptret = attack.caption_delay
-    CASE 25:  scriptret = attack.sound_effect
-    CASE 26:  scriptret = attack.learn_sound_effect
-    CASE 27:  scriptret = attack.base_acc_stat
-    CASE 28:  scriptret = attack.base_dog_stat
-    CASE 29:  scriptret = attack.randomization
-    CASE 30:  scriptret = attack.damage_color
-    CASE 31:  scriptret = attack.targ_offset_x
-    CASE 32:  scriptret = attack.targ_offset_y
-    CASE 33:  scriptret = attack.targ_halign
-    CASE 34:  scriptret = attack.targ_valign
-    CASE 35:  scriptret = attack.change_control
-    CASE 36:  scriptret = attack.change_turncoat
-    CASE 37:  scriptret = attack.change_defector
+    CASE 1:  scriptret = attack.picture
+    CASE 2:  scriptret = attack.targ_stat
+    CASE 3:  scriptret = attack.pal
+    CASE 4:  scriptret = attack.wep_picture
+    CASE 5:  scriptret = attack.wep_pal
+    CASE 6:  scriptret = attack.anim_pattern
+    CASE 7:  scriptret = attack.targ_class
+    CASE 8:  scriptret = attack.targ_set
+    CASE 9:  scriptret = attack.damage_math
+    CASE 10:  scriptret = attack.aim_math
+    CASE 11:  scriptret = attack.base_atk_stat
+    CASE 12:  scriptret = attack.base_def_stat
+    CASE 13:  scriptret = attack.mp_cost
+    CASE 14:  scriptret = attack.hp_cost
+    CASE 15:  scriptret = attack.money_cost
+    CASE 16:  scriptret = attack.extra_damage
+    ' CASE 17:  scriptret = attack.attacker_anim
+    CASE 18:  scriptret = attack.attack_delay
+    CASE 19:  scriptret = attack.turn_delay
+    CASE 20:  scriptret = attack.hits
+    CASE 21:  scriptret = attack.prefer_targ
+    CASE 22:  scriptret = attack.prefer_targ_stat
+    CASE 23:  scriptret = attack.dramatic_pause
+    CASE 24:  scriptret = attack.caption_time
+    CASE 25:  scriptret = attack.caption_delay
+    CASE 26:  scriptret = attack.sound_effect
+    CASE 27:  scriptret = attack.learn_sound_effect
+    CASE 28:  scriptret = attack.base_acc_stat
+    CASE 29:  scriptret = attack.base_dog_stat
+    CASE 30:  scriptret = attack.randomization
+    CASE 31:  scriptret = attack.damage_color
+    CASE 32:  scriptret = attack.targ_offset_x
+    CASE 33:  scriptret = attack.targ_offset_y
+    CASE 34:  scriptret = attack.targ_halign
+    CASE 35:  scriptret = attack.targ_valign
+    CASE 36:  scriptret = attack.change_control
+    CASE 37:  scriptret = attack.change_turncoat
+    CASE 38:  scriptret = attack.change_defector
     ' add further non-bitset data above this line
     ' bitsets:
     CASE 70:  scriptret = attack.cure_instead_of_harm
@@ -5177,7 +5177,9 @@ SUB script_functions(byval cmdid as integer)
     CASE 120:  scriptret = attack.empty_target_ready_meter
     CASE 121:  scriptret = attack.fill_target_ready_meter
     CASE 122:  scriptret = attack.fail_if_targ_regen
-    CASE ELSE:  scripterr "Unknown attack data index " & retvals(1)
+    CASE ELSE:  
+     scripterr "Unknown attack data index " & retvals(1)
+     scriptret = False
    END SELECT
   END IF
 
