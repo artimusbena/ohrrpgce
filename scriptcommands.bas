@@ -5179,7 +5179,7 @@ SUB script_functions(byval cmdid as integer)
     CASE 122:  scriptret = attack.fail_if_targ_regen
     CASE ELSE:  
      scripterr "Unknown attack data index " & retvals(1)
-     scriptret = False
+     scriptret = 0
    END SELECT
   END IF
 
