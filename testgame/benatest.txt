@@ -3,6 +3,15 @@ global variable, begin
 	2, attack data
 end
 
+#for integration with autotest.rpg
+define constant(11, assert expression string)
+script, assert failure, begin
+  $1="ASSERT FAILURE:"
+  trace(1)
+  trace(assert expression string)
+  show textbox (42) #containing "${S11}"
+end
+
 plotscript, attackdatatestscript, begin
 	variable (data, prompt, sl, runall, choice)
 
