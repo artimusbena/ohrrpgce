@@ -5100,7 +5100,7 @@ SUB script_functions(byval cmdid as integer)
     CASE 14:  scriptret = attack.hp_cost
     CASE 15:  scriptret = attack.money_cost
     CASE 16:  scriptret = attack.extra_damage
-    ' CASE 17:  scriptret = attack.attacker_anim
+    CASE 17:  scriptret = 0 ' scriptret = attack.attacker_anim
     CASE 18:  scriptret = attack.attack_delay
     CASE 19:  scriptret = attack.turn_delay
     CASE 20:  scriptret = attack.hits
@@ -5109,8 +5109,8 @@ SUB script_functions(byval cmdid as integer)
     CASE 23:  scriptret = attack.dramatic_pause
     CASE 24:  scriptret = attack.caption_time
     CASE 25:  scriptret = attack.caption_delay
-    CASE 26:  scriptret = attack.sound_effect
-    CASE 27:  scriptret = attack.learn_sound_effect
+    CASE 26:  scriptret = attack.sound_effect - 1
+    CASE 27:  scriptret = attack.learn_sound_effect - 1
     CASE 28:  scriptret = attack.base_acc_stat
     CASE 29:  scriptret = attack.base_dog_stat
     CASE 30:  scriptret = attack.randomization
@@ -5129,9 +5129,9 @@ SUB script_functions(byval cmdid as integer)
     CASE 72:  scriptret = attack.absorb_damage
     CASE 73:  scriptret = attack.unreversable_picture
     CASE 74:  scriptret = attack.can_steal_item
-    ' CASE 75:  scriptret = attack.elemental_damage
-    ' CASE 76:  scriptret = attack.cannot_target_enemy_slot
-    ' CASE 77:  scriptret = attack.cannot_target_hero_slot
+    CASE 75:  scriptret = 0 ' scriptret = attack.elemental_damage
+    CASE 76:  scriptret = 0 ' scriptret = attack.cannot_target_enemy_slot
+    CASE 77:  scriptret = 0 ' scriptret = attack.cannot_target_hero_slot
     CASE 78:  scriptret = attack.ignore_extra_hits
     CASE 79:  scriptret = attack.erase_rewards
     CASE 80:  scriptret = attack.show_damage_without_inflicting

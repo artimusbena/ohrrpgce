@@ -1,0 +1,235 @@
+# string use:
+# 1 - "ASSERT FAILURE:"
+# 2 - "ENTER key to continue."
+# 3 - "BACKSPACE to see previous constant."
+# 4 - "Current Constant:"
+# 5 - "ESC to restart"
+
+global variable, begin
+	1, attack to test
+	2, attack data
+end
+
+#for integration with autotest.rpg
+define constant(11, assert expression string)
+script, assert failure, begin
+  $1="ASSERT FAILURE:"
+  trace(1)
+  trace(assert expression string)
+  show textbox (42) #containing "${S11}"
+end
+
+plotscript, attackdatatestscript, begin
+	variable (data, prompt, sl, weaponsl, bordersl1, bordersl2, runall, choice)
+	
+	# initial settings
+	suspend player
+	set slice visible (get hero sprite(me), false)
+	attack to test := 3
+
+	# get attack number from user
+	$0="Enter Attack Number (default 3): "
+	prompt := create text
+	set horiz anchor (prompt, edge:center)
+	set vert anchor (prompt, edge:middle)
+	set slice text (prompt, 0), clear string (0)
+	put slice (prompt, get screen width / 2, get screen height / 2 -- 10)
+	clamp slice (prompt, lookup slice (sl:root))
+	input string (0)
+	if (string length (0)) then (attack to test := number from string (0), clear string (0))
+
+	# check one constant? check them all?
+	$0="Type a number to check a constant.\nEnter to run through all constants."
+	set slice text (prompt, 0), clear string (0)
+	clamp slice (prompt, lookup slice (sl:root))
+	input string (0)
+	
+	# display chosen attack's main graphics
+	sl := create sprite (spritetype:attack, get attack data (attack to test, attack:picture), get attack data (attack to test, attack:palette))
+	set horiz anchor (sl, edge:center)
+	set vert anchor (sl, edge:bottom)
+		# create border around main sprite
+		bordersl1 := create rect (slice width (sl), slice height (sl), 3)
+		set horiz anchor (bordersl1, edge:center)
+		set vert anchor (bordersl1, edge:bottom)
+	
+	# display chosen attack's weapon graphics
+	weaponsl := create sprite (spritetype:weapon, get attack data (attack to test, attack:weapon picture), get attack data (attack to test, attack:weapon palette))
+	set horiz anchor (weaponsl, edge:left)
+	set vert anchor (weaponsl, edge:bottom)
+		# create border around weapon sprite
+		bordersl2 := create rect (slice width (weaponsl), slice height (weaponsl), 3)
+		set horiz anchor (bordersl2, edge:left)
+		set vert anchor (bordersl2, edge:bottom)
+	
+	# direct check new data function's behavior based on previous input
+	choice := number from string (0), clear string (0)
+	if (choice == 0) then (runall := true, attack data := 1)
+	else (
+		attack data := choice, clear string (0)
+	)
+
+	while (true) do (
+		mainloop
+	)
+	
+	subscript, mainloop, begin
+		check new data
+		wait
+	end
+	
+	subscript, check new data, begin
+		data := get attack data (attack to test, attack data)
+		
+		# default text
+		clear string (0)
+		$0="Undefined Constant"
+		set slice text (prompt, 0)
+		clamp slice (prompt, lookup slice (sl:root))
+		clear string (0)
+		
+		# show current constant value (lower left screen)
+		$4="<-- Current Constant"
+		show string at (4, 20, get screen height -- 11)
+		show value (attack data)
+		
+		# Commented values show what SHOULD appear in the test for attack id 3 in attackdatatest.rpg.
+		# These are all non-default values applied to attack 3 in the editor, to verify each command is working.
+		# Almost all successful bitset checks should read "1" unless activated by default
+		# - Codes:
+		# Additional maker: "- tested" keeps track of verified results during development and testing.
+		# "#<<<" pending a setting to test with (probably because I couldn't find it in the editor)
+		# "#???" Need tmc's input
+		# "#X" Will return to this constant for new functionality via tmc (back indented for greater indentifiability)
+		switch (attack data) do (
+			case (attack:picture) $0="picture: " #3 - tested
+			case (attack:target stat) $0="target stat: " #5 (dodge) - tested
+			case (attack:palette) $0="palette: " #6 - tested
+			case (attack:weapon picture) $0="weapon picture: " #1 - tested
+			case (attack:weapon palette) $0="weapon palette: " #5 - tested
+			case (attack:anim pattern) $0="anim pattern: " #2 (oscillate) - tested
+			case (attack:target class) $0="target class: " #8 (previous target) - tested
+			case (attack:target setting) $0="target setting: " #2 (optional spread) - tested
+			case (attack:damage math) $0="damage math: " #1 (blunt) - tested
+			case (attack:aim math) $0="aim math: " #1 (poor) - tested
+		case (attack:base attack) $0="base attack:  (pending) " #4 (random 0 to 999) - tested #X
+		case (attack:base defense) $0="base defense:  (pending) " #7 (magic) - tested #X
+			case (attack:mp cost) $0="mp cost: " #420 - tested
+			case (attack:hp cost) $0="hp cost: " #69 - tested
+			case (attack:money cost) $0="money cost: " #666 - tested
+			case (attack:extra damage) $0="extra damage: " #-9 (%) - tested
+			case (attack:attacker anim) $0="attacker anim: " #2 (dash in) #ERROR
+			case (attack:delay) $0="delay: " #3 - tested
+			case (attack:turn delay) $0="turn delay: " #7 - tested
+			case (attack:hits) $0="hits: " #17 - tested
+			case (attack:prefer target) $0="prefer target: " #3 farthest - tested
+			case (attack:prefer target stat) $0="prefer target stat: " #5 (Def) - tested
+			case (attack:dramatic pause) $0="dramatic pause: " #997 - tested
+			case (attack:caption time) $0="caption time: " #14 - tested
+			case (attack:caption delay) $0="caption delay: " #16377 - tested
+			case (attack:sound effect) $0="sound effect: ", play sound (data) #3 - tested
+			case (attack:learn sound effect) $0="learn sound effect: " play sound (data) #5 - tested
+		case (attack:base accuracy) $0="base accuracy: (pending) " #X
+		case (attack:base dodge) $0="base dodge: (pending) " #X
+			case (attack:randomization) $0="randomization: " # (default: 20. Internal setting, not avail. in editor)
+			case (attack:damage color) $0="damage color: " #8
+			case (attack:target offset x) $0="target offset x: " #???
+			case (attack:target offset y) $0="target offset y: " #???
+			case (attack:target align h) $0="target align h: " #???
+			case (attack:target align v) $0="target align v: " #???
+			case (attack:change control) $0="change control: " #3 (reset to default) - tested
+			case (attack:change turncoat) $0="change turncoat: " #1 (attack allies) - tested
+			case (attack:change defector) $0="change defector: " #2 (remains with own side) - tested
+			
+			# Attack Data Bitsets
+			case (attack:cure) $0="cure: " #1
+			case (attack:divide spread) $0="divide spread: " #1
+			case (attack:absorb) $0="absorb: " #1
+			case (attack:unreversible picture) $0="unreversible picture: " #1
+			case (attack:can steal item) $0="can steal item: "
+		case (attack:elemental damage) $0="elemental damage: (pending) " #X
+		case (attack:cannot target enemy slot) $0="cannot target enemy slot: (pending)" #X
+		case (attack:cannot target hero slot) $0="cannot target hero slot: (pending)" #X
+			case (attack:ignore extra hits) $0="ignore extra hits: " #1
+			case (attack:erase rewards) $0="erase rewards: "
+			case (attack:show damage without inflicting) $0="show damage without inflicting: "#0
+			case (attack:store target) $0="store target: " #1
+			case (attack:delete stored targets) $0="delete stored targets: " #1
+			case (attack:auto target) $0="auto target: " #1
+			case (attack:show name) $0="show name: " #1
+			case (attack:dont display damage) $0="dont display damage: " #1
+			case (attack:dont display miss) $0="dont display miss: " #1
+			case (attack:dont display fail) $0="dont display fail: " #1
+			case (attack:reset target stat) $0="reset target stat: " #1
+			case (attack:allow excess cure) $0="allow excess cure: " #1
+			case (attack:useable outside battle) $0="useable outside battle: "
+			case (attack:useable inside battle) $0="useable inside battle: "
+			case (attack:damage can be zero) $0="damage can be zero: " #1
+			case (attack:force run) $0="force run: "
+			case (attack:force victory) $0="force victory: "
+			case (attack:force battle exit) $0="force battle exit: "
+			case (attack:mutable) $0="mutable: "
+			case (attack:fail if target poison) $0="fail if target poison: "
+			case (attack:fail if target stun) $0="fail if target stun: "
+			case (attack:fail if target mute) $0="fail if target mute: "
+			case (attack:percent damage not set) $0="percent damage not set: "
+			case (attack:no chain on fail) $0="no chain on fail: "
+			case (attack:reset poison) $0="reset poison: "
+			case (attack:reset regen) $0="reset regen: "
+			case (attack:reset stun) $0="reset stun: "
+			case (attack:reset mute) $0="reset mute: "
+			case (attack:cancel targets attack) $0="cancel targets attack: "
+			case (attack:no cancel by attacks) $0="no cancel by attacks: "
+			case (attack:no spawn on attack) $0="no spawn on attack: "
+			case (attack:no spawn on kill) $0="no spawn on kill: "
+			case (attack:check costs as item) $0="check costs as item: "
+			case (attack:recheck costs after delay) $0="recheck costs after delay: "
+			case (attack:target no flinch) $0="target no flinch: " #1
+			case (attack:no exceed target stat) $0="no exceed target stat: " #1
+			case (attack:non blocking) $0="non blocking: "
+			case (attack:no trigger elemental counters) $0="no trigger elemental counters: "
+			case (attack:poison is negative regen) $0="poison is negative regen: "
+			case (attack:always hide attacker) $0="always hide attacker: "
+			case (attack:always unhide attacker) $0="always unhide attacker: "
+			case (attack:blocking counterattack) $0="blocking counterattack: "
+			case (attack:enemy target readymeter) $0="enemy target readymeter: "
+			case (attack:fill target readymeter) $0="fill target readymeter: "
+			case (attack:fail if target regen) $0="fail if target regen: "
+		)
+		
+		# update information text based on above switch
+			if (string length (0)) then (
+				append number (0, data)
+				set slice text (prompt, 0)
+				clamp slice (prompt, lookup slice (sl:root))
+			)
+			
+		# position attack and weapon graphics - placed here for faster feedback on changes made
+			put slice (sl, get screen width / 2, 18 + slice height (sl))
+			put slice (bordersl1, slice x (sl), slice y (sl))
+			move slice below (bordersl1, sl)
+			put slice (weaponsl, 8 + get screen width / 2 + slice width (sl) / 2, 18 + slice height (sl))
+			put slice (bordersl2, slice x (weaponsl), slice y (weaponsl))
+			move slice below (bordersl2, weaponsl)
+			put slice (prompt, get screen width / 2, get screen height -- 80)
+			clamp slice (prompt, lookup slice (sl:root))
+
+		if (runall == True) then (
+			# explain controls
+			$2="ENTER to continue."
+			$3="BACKSPACE to see previous constant."
+			$5="ESC to restart."
+			center string at (2, get screen width / 2, get screen height -- 60)
+			center string at (3, get screen width / 2, get screen height -- 50)
+			center string at (5, get screen width / 2, get screen height -- 40)
+			
+			# wait for key response
+			wait for key (any key)
+			
+			# execute next action based on keypress
+			if (attack data > 1 && new keypress (key:backspace)) then (attack data -= 1)
+			elseif (new keypress (key:enter)) then (attack data += 1)
+			elseif (new keypress (key:esc)) then (attack data := 1)
+		) else (exit script)
+	end
+end

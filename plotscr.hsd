@@ -2339,7 +2339,7 @@ define constant, begin
 5, attack:weapon palette
 6, attack:anim pattern
 7, attack:target class
-8, attack:target set
+8, attack:target setting
 9, attack:damage math
 10, attack:aim math
 11, attack:base attack
@@ -2376,9 +2376,9 @@ define constant, begin
 72, attack:absorb
 73, attack:unreversible picture
 74, attack:can steal item
-# 75, attack:elemental damage
-# 76, attack:cannot target enemy slot
-# 77, attack:cannot target hero slot
+75, attack:elemental damage # will not work for now
+76, attack:cannot target enemy slot # will not work for now
+77, attack:cannot target hero slot # will not work for now
 78, attack:ignore extra hits
 79, attack:erase rewards
 80, attack:show damage without inflicting
