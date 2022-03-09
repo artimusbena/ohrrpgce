@@ -95,7 +95,6 @@ plotscript, attackdatatestscript, begin
 		
 		# Commented values show what SHOULD appear in the test for attack id 3 in attackdatatest.rpg.
 		# These are all non-default values applied to attack 3 in the editor, to verify each command is working.
-		# Almost all successful bitset checks should read "1" unless activated by default
 		# - Codes:
 		# "#???" Need tmc's input
 		# "#X" Will return to this constant for new functionality via tmc (back indented for greater indentifiability)
