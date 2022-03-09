@@ -2415,13 +2415,13 @@ define constant, begin
 111, attack:recheck costs after delay
 112, attack:target no flinch
 113, attack:no exceed target stat
-114, attack:non blocking
+114, attack:delay non blocking
 115, attack:no trigger elemental counters
 116, attack:poison is negative regen
 117, attack:always hide attacker
 118, attack:always unhide attacker
 119, attack:blocking counterattack
-120, attack:enemy target readymeter
+120, attack:empty target readymeter
 121, attack:fill target readymeter
 122, attack:fail if target regen
 end
